@@ -57,7 +57,7 @@ block="server {
 
     sendfile off;
 
-    # see https://docs.typo3.org/m/typo3/guide-installation/master/en-us/In-depth/SystemRequirements/Index.html#nginx
+    # see https://docs.typo3.org/m/typo3/tutorial-getting-started/main/en-us/SystemRequirements/Index.html#web-server
 
     # Compressing resource files will save bandwidth and so improve loading speed especially for users
     # with slower internet connections. TYPO3 can compress the .js and .css files for you.
