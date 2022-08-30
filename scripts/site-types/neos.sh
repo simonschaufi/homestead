@@ -28,22 +28,13 @@ if [ -n "${10}" ]; then
     done
 fi
 
-if [ "$7" = "true" ]
-then configureXhgui="
-location /xhgui {
-        try_files \$uri \$uri/ /xhgui/index.php?\$args;
-}
-"
-else configureXhgui=""
-fi
-
 block="server {
     listen ${3:-80};
     listen ${4:-443} ssl http2;
     server_name .$1;
     root \"$2\";
 
-    index index.html index.php;
+    index index.php;
 
     charset utf-8;
 
@@ -54,13 +45,11 @@ block="server {
         $headersTXT
     }
 
-    $configureXhgui
-
     location = /favicon.ico { access_log off; log_not_found off; }
     location = /robots.txt  { access_log off; log_not_found off; }
 
     access_log off;
-    error_log  /var/log/nginx/$1-error.log error;
+    error_log /var/log/nginx/$1-error.log error;
 
     sendfile off;
 
